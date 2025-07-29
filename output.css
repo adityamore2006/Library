@@ -1,0 +1,27 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.readingList {
+  text-align: center;
+  width: 100%;
+}
+
+.book-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin: 20px 0;
+}
+
+.identifiers, 
+.book-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+  margin: 20px 0;
+}
