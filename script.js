@@ -18,7 +18,11 @@ function addBookToLibrary() {
 
     myLibrary.push(new Book(title, author, pages, read))
 
+    this.reset()
+    
     updateList()
+
+    document.querySelector('dialog').close();
   })
 }
 
@@ -47,5 +51,17 @@ function updateList() {
 
   })
 }
+
+document.getElementById('openDialogue').addEventListener('click', () => {
+  const dialog = document.querySelector("dialog")
+  const openDialogue = document.getElementById("openDialogue")
+  const closeButton = document.getElementById("closeButton").addEventListener("click", () => dialog.close())
+  const addBook = document.getElementById("addBook")
+
+  dialog.showModal();
+  
+})
+
+
 
 addBookToLibrary();

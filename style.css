@@ -25,3 +25,17 @@ body {
     max-width: 800px;
     margin: 20px 0;
 }
+
+.content{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.content hr {
+    width: 100%;
+    align-self: stretch;
+    border: 1px solid black;
+    box-sizing: border-box;
+}

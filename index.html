@@ -10,9 +10,8 @@
     <h1 class="readingList">
         Reading List
     </h1>
-    <div>
-        <div>
-            <form id="book-form">
+    <dialog>
+        <form id="book-form">
                 <div>
                     <input type="text" id="title" placeholder="Title" required />
                     <input type="text" id="author" placeholder="Author" required />
@@ -22,17 +21,21 @@
                         <span>Read</span>
                     </label>
                 </div>
-                <button type="submit">
+                <button id = "addBook" type="submit">
                     Add
                 </button>
+                <button id="closeButton">Close</button>
             </form>
-        </div>
+    </dialog>
+    <button id="openDialogue">Add Book</button>
+    <div class="content">
         <div class="identifiers">
             <div class="title">Title</div>
             <div class="author">Author</div>
             <div class="pages">Pages</div>
             <div class="read">Read</div>
         </div>
+        <hr>
         <div class="book-rows"></div>
     </div>
     <script src="script.js"></script>
