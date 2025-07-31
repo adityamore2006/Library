@@ -8,6 +8,10 @@ function Book(title, author, pages, read) {
   this.id = crypto.randomUUID();
 }
 
+Book.prototype.toggleRead = function() {
+  this.read = !this.read;
+};
+
 function addBookToLibrary() {
   document.getElementById('book-form').addEventListener('submit', function(event){
     event.preventDefault();
@@ -47,6 +51,14 @@ function updateList() {
     pages.textContent = book.pages
     pages.className = 'pages'
 
+    const toggleReadButton = document.createElement('input')
+    toggleReadButton.type = 'checkbox'
+    toggleReadButton.checked = book.read
+    toggleReadButton.addEventListener('change', () => {
+      book.toggleRead();
+      updateList();
+    })
+
     const deleteButton = document.createElement('button')
     deleteButton.textContent = "Delete"
     deleteButton.addEventListener('click', ()=> {
@@ -59,7 +71,10 @@ function updateList() {
       }
     })
 
-    row.append(title, author, pages, deleteButton)
+    const readDelete = document.createElement('div')
+    readDelete.append(toggleReadButton, deleteButton)
+
+    row.append(title, author, pages, readDelete)
     parent.appendChild(row)
   })
 }
