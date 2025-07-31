@@ -87,4 +87,11 @@ document.getElementById('openDialogue').addEventListener('click', () => {
   dialog.showModal();
 });
 
-addBookToLibrary();
+
+document.addEventListener("DOMContentLoaded", () => {
+    myLibrary.push(new Book('Harry Potter', 'J.K. Rowling', '256', true));
+    myLibrary.push(new Book('The Lord of the Rings', 'J.R.R. Tolkien', '1077', false));
+    myLibrary.push(new Book('A Game of Thrones', 'G.R.R Martin', '1225', true));
+    updateList();
+    addBookToLibrary(); // set up form event listener
+});
