@@ -32,36 +32,44 @@ function updateList() {
   
   myLibrary.forEach(book => {
     const row = document.createElement('div')
-    row.className = 'book-row' 
+    row.className = 'book-row'
+    row.setAttribute('data-id', book.id);
   
     const title = document.createElement('div')
     title.textContent = book.title
+    title.className = 'title'
 
     const author = document.createElement('div')
     author.textContent = book.author  
+    author.className = 'author'
   
     const pages = document.createElement('div')
     pages.textContent = book.pages
+    pages.className = 'pages'
 
-    const read = document.createElement('div')
-    read.textContent = book.read
+    const deleteButton = document.createElement('button')
+    deleteButton.textContent = "Delete"
+    deleteButton.addEventListener('click', ()=> {
+      const bookId = row.getAttribute('data-id');
+      const index = myLibrary.findIndex(b => b.id ===bookId)
+      if (index !== -1){
+        myLibrary.splice(index, 1);
+        updateList()
 
-    row.append(title, author, pages, read)
+      }
+    })
+
+    row.append(title, author, pages, deleteButton)
     parent.appendChild(row)
-
   })
 }
 
+const dialog = document.querySelector("dialog");
+const closeButton = document.getElementById("closeButton");
+closeButton.addEventListener("click", () => dialog.close());
+
 document.getElementById('openDialogue').addEventListener('click', () => {
-  const dialog = document.querySelector("dialog")
-  const openDialogue = document.getElementById("openDialogue")
-  const closeButton = document.getElementById("closeButton").addEventListener("click", () => dialog.close())
-  const addBook = document.getElementById("addBook")
-
   dialog.showModal();
-  
-})
-
-
+});
 
 addBookToLibrary();
